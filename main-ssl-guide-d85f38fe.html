@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>斗球 · 简明指南与访问说明</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f2f4f6;
+            font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.65;
+            color: #1c1e21;
+            padding: 2rem 1.25rem;
+        }
+
+        .page-wrap {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* 卡片通用设计 */
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            border: 1px solid #e4e8ed;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+            padding: 2rem 2rem 2.2rem;
+            margin-bottom: 1.8rem;
+            transition: box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.02);
+        }
+
+        /* hero 区域特别处理 */
+        .hero {
+            background: #ffffff;
+            border-radius: 24px;
+            border: 1px solid #e0e5ea;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.03);
+            padding: 2.8rem 2.2rem;
+            margin-bottom: 2.2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 550;
+            letter-spacing: -0.02em;
+            color: #0b0d0f;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero .sub {
+            font-size: 1.1rem;
+            color: #5a6068;
+            max-width: 620px;
+            margin: 0.6rem auto 0;
+        }
+
+        h2 {
+            font-size: 1.45rem;
+            font-weight: 530;
+            margin-top: 0.2rem;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.01em;
+            color: #1b1d20;
+            border-left: 4px solid #7f8c9a;
+            padding-left: 0.9rem;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 530;
+            margin: 1.2rem 0 0.5rem;
+            color: #2c2f33;
+        }
+
+        p {
+            margin-bottom: 0.9rem;
+        }
+
+        ul, ol {
+            padding-left: 1.6rem;
+            margin: 0.8rem 0 1rem;
+        }
+
+        li {
+            margin-bottom: 0.45rem;
+        }
+
+        a {
+            color: #1c4a7a;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(28, 74, 122, 0.25);
+            transition: border-color 0.15s, color 0.15s;
+        }
+
+        a:hover {
+            color: #0a2d4e;
+            border-bottom-color: #0a2d4e;
+        }
+
+        /* 链接置于句中的样式（无额外修饰） */
+        .inline-link {
+            border-bottom: 1px solid rgba(28, 74, 122, 0.25);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin: 1.4rem 0 0.8rem;
+        }
+
+        .feature-item {
+            background: #f9fafb;
+            padding: 1.2rem 1.4rem;
+            border-radius: 16px;
+            border: 1px solid #e6eaef;
+        }
+
+        .feature-item strong {
+            display: block;
+            font-weight: 530;
+            font-size: 1.05rem;
+            margin-bottom: 0.35rem;
+            color: #1b1f24;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #eef1f5;
+            color: #2d3745;
+            font-size: 0.78rem;
+            font-weight: 500;
+            padding: 0.2rem 0.8rem;
+            border-radius: 40px;
+            margin-right: 0.5rem;
+            margin-bottom: 0.35rem;
+            letter-spacing: 0.01em;
+            border: 1px solid #dadfe6;
+        }
+
+        .faq-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #e8ecf1;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-q {
+            font-weight: 530;
+            color: #1b1e23;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-a {
+            color: #3d454f;
+            font-size: 0.95rem;
+        }
+
+        .note {
+            background: #f6f8fa;
+            padding: 1.2rem 1.6rem;
+            border-radius: 16px;
+            border-left: 4px solid #8c9aa8;
+            margin: 1.4rem 0 0.4rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-note {
+            text-align: center;
+            color: #6a737f;
+            font-size: 0.9rem;
+            padding: 1.6rem 0 0.3rem;
+            border-top: 1px solid #dfe4e9;
+            margin-top: 1.6rem;
+        }
+
+        .footer-note a {
+            color: #4a5b6e;
+            border-bottom: 1px solid rgba(74, 91, 110, 0.2);
+        }
+
+        /* 响应式 */
+        @media (max-width: 700px) {
+            body {
+                padding: 1.2rem 0.9rem;
+            }
+            .card {
+                padding: 1.5rem 1.2rem;
+            }
+            .hero {
+                padding: 2rem 1.2rem;
+            }
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+            .grid-2 {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            h2 {
+                font-size: 1.25rem;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            .hero .sub {
+                font-size: 1rem;
+            }
+            .card {
+                padding: 1.2rem 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+
+    <!-- hero 摘要区 -->
+    <div class="hero">
+        <h1>斗球 · 简明使用指南</h1>
+        <div class="sub">
+            面向日常信息获取与内容浏览的场景说明，兼顾效率与访问注意。
+        </div>
+    </div>
+
+    <!-- 卡片：平台亮点摘要 -->
+    <div class="card">
+        <h2>▎摘要与定位</h2>
+        <p><a href="https://main-ssl-douqiu.com">斗球</a> 是一个聚合信息与轻量互动的平台，侧重于提供结构化的内容展示和快速反馈。其核心设计围绕信息分类、低延迟响应以及适配多终端浏览展开。以下从功能亮点、使用建议和访问注意事项三个层面给出简明说明。</p>
+        <p>平台当前主要面向对资讯整合有需求的用户，无明显使用门槛，但建议在了解基础特性后开始浏览，以获得更一致的体验。</p>
+    </div>
+
+    <!-- 卡片：特点 + 使用建议 (两列布局) -->
+    <div class="card">
+        <h2>▎亮点与使用建议</h2>
+        <div class="grid-2">
+            <div class="feature-item">
+                <strong>⚡ 信息流分区</strong>
+                内容按类别与时间线组织，减少无关干扰。可依据个人关注点切换浏览范围。
+            </div>
+            <div class="feature-item">
+                <strong>📱 响应式适配</strong>
+                在桌面与移动端均保持可读布局，关键操作区域尺寸优化，适合碎片化使用。
+            </div>
+            <div class="feature-item">
+                <strong>🔍 低干扰浏览</strong>
+                界面强调内容优先，辅助元素克制。建议关闭无关浏览器插件以保证样式稳定。
+            </div>
+            <div class="feature-item">
+                <strong>📎 更新节奏</strong>
+                内容源保持每日多次同步，高峰时段可能存在短暂排队。建议错峰使用以得到更连贯的体验。
+            </div>
+        </div>
+        <div class="note">
+            <strong>使用提醒：</strong> 首次使用时可先浏览各分区概览，熟悉信息分类逻辑。如遇到加载延迟，可尝试刷新或稍后重试。平台无强制注册要求，部分互动功能需简单验证。
+        </div>
+    </div>
+
+    <!-- 卡片：典型场景 -->
+    <div class="card">
+        <h2>▎适用场景举例</h2>
+        <ul>
+            <li><strong>日常信息获取：</strong> 快速浏览分类摘要，获取自己关注的领域动态。</li>
+            <li><strong>碎片时间阅读：</strong> 移动端适配良好，适合通勤、等候等短时段使用。</li>
+            <li><strong>内容对比与参考：</strong> 同一主题下聚合多条来源，便于横向比较。</li>
+            <li><strong>轻度互动：</strong> 在允许范围内参与表达观点，注意遵守社区基本规范。</li>
+        </ul>
+        <p style="margin-top: 0.8rem;">以上场景均基于常规使用，不涉及金融、医疗等专业决策领域。</p>
+    </div>
+
+    <!-- 卡片：访问说明 + 可信但克制的提醒 -->
+    <div class="card">
+        <h2>▎访问说明与注意事项</h2>
+        <p>通过 <a href="https://main-ssl-douqiu.com">斗球</a> 访问时，建议使用主流浏览器（如 Chrome 110+、Firefox 110+、Safari 16+）以取得最佳显示效果。平台使用标准 HTTPS 传输，但用户仍应自行留意设备与网络环境安全。</p>
+        <ul>
+            <li><strong>网络要求：</strong> 建议带宽不低于 2 Mbps，避免频繁刷新。</li>
+            <li><strong>缓存说明：</strong> 平台使用本地缓存优化加载，必要时可清除缓存以获取最新内容。</li>
+            <li><strong>隐私提示：</strong> 不收集无关个人信息，但第三方内容嵌入可能涉及独立数据策略，可查阅对应来源说明。</li>
+            <li><strong>无诱导承诺：</strong> 本平台不保证任何收益、排名或特殊权益，所有信息仅供参考。</li>
+        </ul>
+        <div style="margin-top: 0.8rem; display: flex; flex-wrap: wrap; gap: 0.4rem 0.2rem;">
+            <span class="tag">HTTPS</span>
+            <span class="tag">主流浏览器</span>
+            <span class="tag">缓存优化</span>
+            <span class="tag">无强制注册</span>
+            <span class="tag">标准传输</span>
+        </div>
+    </div>
+
+    <!-- 卡片：FAQ 摘要（轻量问答） -->
+    <div class="card">
+        <h2>▎常见问题摘要</h2>
+        <div class="faq-item">
+            <div class="faq-q">Q：是否需要创建账号才能浏览大部分内容？</div>
+            <div class="faq-a">浏览公开内容通常无需账号；部分互动或收藏功能可能要求简单验证。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Q：移动端与桌面端体验有差异吗？</div>
+            <div class="faq-a">核心功能一致，移动端对触摸操作做了适配，布局会自动调整至单列。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Q：内容更新频率大概是多少？</div>
+            <div class="faq-a">主要信息流每日同步多次，具体视来源方更新节奏而定。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Q：遇到页面显示异常应如何处理？</div>
+            <div class="faq-a">建议先刷新页面、检查网络连接；若持续异常，可尝试清除缓存或更换浏览器。</div>
+        </div>
+        <p style="margin-top: 1rem; font-size: 0.95rem; color: #4b535e;">以上仅为基础指引，更详细的说明可参考平台内帮助模块。</p>
+    </div>
+
+    <!-- 底部 -->
+    <div class="footer-note">
+        更多信息请参阅 <a href="https://main-ssl-douqiu.com">斗球</a> · 简明指南 · 保持理性与适度
+    </div>
+
+</div>
+</body>
+</html>
